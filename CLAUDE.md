@@ -27,7 +27,7 @@ Personal website for **Avirup Basu**, hosted on GitHub Pages. Read this before m
 - `build.inlineStylesheets: 'always'`: the one small stylesheet (`src/styles/global.css`) is inlined, so there are no render-blocking requests.
 - Deployed to GitHub Pages via **GitHub Actions** (`withastro/action@v6` + `actions/deploy-pages@v5`). Pages source is set to "GitHub Actions".
 - Repo is a **user site** (`avirup171.github.io`), served at the root, so no `base` path is needed.
-- Custom domain: **https://avirupbasu.com** (apex is canonical; `www` and `avirup171.github.io` redirect to it). DNS at GoDaddy: four A + four AAAA records to GitHub Pages, `www` CNAME → `avirup171.github.io`. If the domain changes, update `site` in `astro.config.mjs`, `url` in `profile.json`, `public/robots.txt`, `public/og.png`, and repo Settings → Pages. No `CNAME` file is needed with Actions deployment.
+- Custom domain: **https://avirupbasu.com** (apex is canonical; `www` and `avirup171.github.io` redirect to it). DNS at GoDaddy: four A + four AAAA records to GitHub Pages, `www` CNAME → `avirup171.github.io`. If the domain changes, update `site` in `astro.config.mjs`, `url` in `profile.json`, `public/robots.txt`, `public/og.png`, `public/CNAME`, and repo Settings → Pages. `public/CNAME` (containing `avirupbasu.com`) ships in every build: GitHub's docs say Actions deployments don't need it, but Astro's guide recommends it; it was added while debugging a 404 on the custom domain (Oct 2026). Keep it.
 
 ## Content model: everything configurable lives in JSON
 
@@ -64,7 +64,7 @@ src/
   assets/projects/   project screenshots
   pages/index.astro  main page (plus 404.astro, noindex)
 scripts/validate-json.mjs  prebuild JSON syntax check
-public/              robots.txt, og.png (1200×630), favicon.svg
+public/              robots.txt, og.png (1200×630), favicon.svg, CNAME (custom domain)
 .github/workflows/deploy.yml
 ```
 
