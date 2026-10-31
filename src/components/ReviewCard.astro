@@ -1,0 +1,18 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  review: CollectionEntry<'reviews'>['data'];
+}
+const { review } = Astro.props;
+---
+
+<figure class="card review-card">
+  <blockquote>
+    <p>{review.quote}</p>
+  </blockquote>
+  <figcaption>
+    {review.link ? <a href={review.link}>{review.name}</a> : <span>{review.name}</span>}
+    <span class="review-card__role">{review.role}</span>
+  </figcaption>
+</figure>

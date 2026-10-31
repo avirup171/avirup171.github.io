@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  link: CollectionEntry<'links'>['data'];
+}
+const { link } = Astro.props;
+
+const iso = link.date.toISOString().slice(0, 10);
+const human = link.date.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+---
+
+<article class="card link-card">
+  <p class="meta">
+    <span>{link.platform}</span>
+    <span aria-hidden="true">·</span>
+    <time datetime={iso}>{human}</time>
+  </p>
+  <h3 class="card__title">
+    <a href={link.url}>{link.title}</a>
+  </h3>
+  <p>{link.summary}</p>
+</article>

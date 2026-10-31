@@ -1,0 +1,48 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+
+interface Props {
+  project: CollectionEntry<'projects'>['data'];
+}
+const { project } = Astro.props;
+const titleHref = project.url ?? project.repo;
+---
+
+<article class="card project-card">
+  {
+    project.image && (
+      <Image
+        class="project-card__image"
+        src={project.image}
+        alt={project.imageAlt ?? ''}
+        widths={[400, 800, 1200]}
+        sizes="(min-width: 42rem) 40rem, 100vw"
+        loading="lazy"
+      />
+    )
+  }
+  <div class="project-card__body">
+    <h3 class="card__title">
+      {titleHref ? <a href={titleHref}>{project.name}</a> : project.name}
+    </h3>
+    <p>{project.summary}</p>
+    {
+      project.tech.length > 0 && (
+        <ul class="tags tags--compact" aria-label="Built with">
+          {project.tech.map((t) => (
+            <li>{t}</li>
+          ))}
+        </ul>
+      )
+    }
+    {
+      (project.repo || project.url) && (
+        <p class="project-card__links">
+          {project.url && <a href={project.url}>{project.urlLabel}</a>}
+          {project.repo && <a href={project.repo}>Source code</a>}
+        </p>
+      )
+    }
+  </div>
+</article>

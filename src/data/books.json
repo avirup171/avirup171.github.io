@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Building IoT Systems: Design Scalable IoT Systems from Edge to Cloud",
+    "publisher": "Apress (Pocket Guides)",
+    "year": 2025,
+    "isbn": "9798868812118",
+    "summary": "A compact guide to how IoT components communicate, how data flows from edge devices through to the cloud, and how to design IoT systems that scale."
+  },
+  {
+    "title": "Intel Edison Projects",
+    "publisher": "Packt Publishing",
+    "year": 2017,
+    "isbn": "9781787288409",
+    "summary": "A project-based introduction to building IoT applications with the Intel Edison board."
+  }
+]

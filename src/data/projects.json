@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Image Viewer",
+    "summary": "A fast, simple desktop image viewer for macOS (Apple Silicon) and Windows, built with Tauri 2, Rust and React. Thumbnails are generated and cached in Rust so large camera folders stay responsive, and it includes a crop editor that keeps EXIF data and colour profiles.",
+    "tech": ["Rust", "Tauri 2", "React", "TypeScript"],
+    "repo": "https://github.com/avirup171/image_viewer",
+    "url": "https://github.com/avirup171/image_viewer/releases/latest",
+    "urlLabel": "Download",
+    "image": "../assets/projects/image-viewer.jpg",
+    "imageAlt": "Image Viewer showing a folder of photos as a thumbnail grid, with recent folders in the sidebar"
+  }
+]

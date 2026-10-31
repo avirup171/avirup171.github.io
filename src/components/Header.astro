@@ -1,0 +1,26 @@
+---
+interface Props {
+  name: string;
+  sections: { id: string; label: string }[];
+}
+const { name, sections } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="site-header__home" href="/" aria-label={`${name}, home`}>{name}</a>
+    {
+      sections.length > 0 && (
+        <nav aria-label="Sections">
+          <ul class="site-nav">
+            {sections.map((s) => (
+              <li>
+                <a href={`/#${s.id}`}>{s.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+  </div>
+</header>

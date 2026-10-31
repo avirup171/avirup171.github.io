@@ -1,0 +1,70 @@
+{
+  "name": "Avirup Basu",
+  "title": "CTO & Co-founder, Kernopy",
+  "jobTitle": "CTO & Co-founder",
+  "company": "Kernopy",
+  "companyUrl": "",
+  "location": "Siliguri, West Bengal, India",
+  "url": "https://avirup171.github.io/",
+  "image": "../assets/avirup.jpg",
+  "tagline": "I and my team build Kernopy, an industrial AI native operations platform for every assets and every plant.",
+  "description": "Avirup Basu is CTO & co-founder of Kernopy, an edge-to-cloud Industrial IoT platform built in Rust. Author of two books on IoT.",
+  "bio": [
+    "I'm the CTO and co-founder of Kernopy,and I'm based in Siliguri, West Bengal, India.",
+    "Before Kernopy, I was at P360, where I built IoT solutions and enterprise messaging systems for the pharmaceutical industry, designed systems that had to scale, and was granted a patent.",
+    "I've written two books on IoT and published research papers. I'm also part of the developer community in Siliguri through GDG Siliguri."
+  ],
+  "knowsAbout": [
+    "Rust",
+    "Industrial IoT",
+    "Edge computing",
+    "Internet of Things",
+    "Modbus",
+    "OPC UA",
+    "MQTT",
+    "Tokio",
+    "Robotics",
+    "Artificial intelligence"
+  ],
+  "email": "",
+  "profiles": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/avirup171"
+    },
+    {
+      "label": "X (Twitter)",
+      "url": "https://x.com/avirup171"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/avirup171",
+      "writing": true
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/user/Avirup171"
+    },
+    {
+      "label": "Spotify",
+      "url": "https://open.spotify.com/artist/4hqi7balUUHnGaze3AEr3e"
+    },
+    {
+      "label": "DEV",
+      "url": "https://dev.to/avirup171",
+      "writing": true
+    },
+    {
+      "label": "Sessionize",
+      "url": "https://sessionize.com/avirup171/"
+    },
+    {
+      "label": "Product Hunt",
+      "url": "https://www.producthunt.com/@avirup171"
+    },
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/starbridger"
+    }
+  ]
+}

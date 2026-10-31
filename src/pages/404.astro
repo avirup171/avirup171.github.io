@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getProfile } from '../lib/data';
+
+const profile = await getProfile();
+---
+
+<Base
+  profile={profile}
+  title="Page not found"
+  description={`This page doesn't exist. Head back to ${profile.name}'s homepage for his work, writing and contact links.`}
+  noindex
+>
+  <Header name={profile.name} sections={[]} />
+  <main id="main" class="wrap not-found">
+    <h1>Page not found</h1>
+    <p>This page doesn't exist, or it has moved.</p>
+    <p><a href="/">Go to the homepage</a></p>
+  </main>
+  <Footer name={profile.name} location={profile.location} />
+</Base>

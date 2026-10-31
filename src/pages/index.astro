@@ -1,0 +1,172 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import LinkCard from '../components/LinkCard.astro';
+import ReviewCard from '../components/ReviewCard.astro';
+import BookCard from '../components/BookCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getProfile, getLinks, getReviews, getBooks, getProjects } from '../lib/data';
+
+const profile = await getProfile();
+const { featured, rest } = await getLinks();
+const reviews = await getReviews();
+const books = await getBooks();
+const projects = await getProjects();
+
+const writingProfiles = profile.profiles.filter((p) => p.writing);
+const hasWriting = featured.length + rest.length > 0 || writingProfiles.length > 0;
+
+// Sections only render (and only appear in the nav) when they have content.
+const sections = [
+  { id: 'about', label: 'About', show: true },
+  { id: 'writing', label: 'Writing', show: hasWriting },
+  { id: 'projects', label: 'Projects', show: projects.length > 0 },
+  { id: 'books', label: 'Books', show: books.length > 0 },
+  { id: 'testimonials', label: 'Testimonials', show: reviews.length > 0 },
+  { id: 'contact', label: 'Contact', show: true },
+].filter((s) => s.show);
+const has = (id: string) => sections.some((s) => s.id === id);
+---
+
+<Base profile={profile}>
+  <Header name={profile.name} sections={sections} />
+
+  <main id="main" class="wrap">
+    <section class="hero" aria-labelledby="name">
+      <Image
+        class="hero__photo"
+        src={profile.image}
+        alt="Avirup Basu"
+        width={176}
+        height={176}
+        densities={[1, 2]}
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div>
+        <h1 id="name">{profile.name}</h1>
+        <p class="hero__role">
+          {profile.jobTitle},{' '}
+          {profile.companyUrl ? <a href={profile.companyUrl}>{profile.company}</a> : profile.company}
+        </p>
+        <p class="hero__tagline">{profile.tagline}</p>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-h">
+      <h2 id="about-h">About</h2>
+      <div class="prose">
+        {profile.bio.map((para) => <p>{para}</p>)}
+      </div>
+      {
+        profile.knowsAbout.length > 0 && (
+          <ul class="tags" aria-label="Areas of expertise">
+            {profile.knowsAbout.map((k) => (
+              <li>{k}</li>
+            ))}
+          </ul>
+        )
+      }
+    </section>
+
+    {
+      has('writing') && (
+        <section id="writing" aria-labelledby="writing-h">
+          <h2 id="writing-h">Writing</h2>
+          {featured.length > 0 && (
+            <div class="stack featured">
+              {featured.map((link) => (
+                <LinkCard link={link} />
+              ))}
+            </div>
+          )}
+          {rest.length > 0 && (
+            <div class="stack">
+              {rest.map((link) => (
+                <LinkCard link={link} />
+              ))}
+            </div>
+          )}
+          {writingProfiles.length > 0 && (
+            <p class="muted">
+              More of my writing is on{' '}
+              {writingProfiles.map((p, i) => (
+                <>
+                  <a href={p.url}>{p.label}</a>
+                  {i < writingProfiles.length - 2 ? ', ' : i === writingProfiles.length - 2 ? ' and ' : ''}
+                </>
+              ))}
+              .
+            </p>
+          )}
+        </section>
+      )
+    }
+
+    {
+      has('projects') && (
+        <section id="projects" aria-labelledby="projects-h">
+          <h2 id="projects-h">Hobby projects</h2>
+          <div class="stack">
+            {projects.map((project) => (
+              <ProjectCard project={project} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      has('books') && (
+        <section id="books" aria-labelledby="books-h">
+          <h2 id="books-h">Books</h2>
+          <div class="stack">
+            {books.map((book) => (
+              <BookCard book={book} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      has('testimonials') && (
+        <section id="testimonials" aria-labelledby="testimonials-h">
+          <h2 id="testimonials-h">Testimonials</h2>
+          <div class="stack">
+            {reviews.map((review) => (
+              <ReviewCard review={review} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <section id="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">Contact</h2>
+      {
+        profile.email && (
+          <p>
+            Email: <a href={`mailto:${profile.email}`}>{profile.email}</a>
+          </p>
+        )
+      }
+      <p class="muted">Find me on:</p>
+      <ul class="profile-links">
+        {
+          profile.profiles.map((p) => (
+            <li>
+              <a href={p.url} rel="me">
+                {p.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+
+  <Footer name={profile.name} location={profile.location} />
+</Base>

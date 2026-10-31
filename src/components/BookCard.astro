@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  book: CollectionEntry<'books'>['data'];
+}
+const { book } = Astro.props;
+---
+
+<article class="card book-card">
+  <p class="meta">
+    <span>{book.publisher}</span>
+    <span aria-hidden="true">·</span>
+    <span>{book.year}</span>
+  </p>
+  <h3 class="card__title">
+    {book.url ? <a href={book.url}>{book.title}</a> : book.title}
+  </h3>
+  <p>{book.summary}</p>
+  {book.isbn && <p class="meta">ISBN {book.isbn}</p>}
+</article>
