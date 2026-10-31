@@ -27,7 +27,7 @@ Personal website for **Avirup Basu**, hosted on GitHub Pages. Read this before m
 - `build.inlineStylesheets: 'always'`: the one small stylesheet (`src/styles/global.css`) is inlined, so there are no render-blocking requests.
 - Deployed to GitHub Pages via **GitHub Actions** (`withastro/action@v6` + `actions/deploy-pages@v5`). Pages source is set to "GitHub Actions".
 - Repo is a **user site** (`avirup171.github.io`), served at the root, so no `base` path is needed.
-- Custom domain: **TBD**. When it's chosen, update `site` in `astro.config.mjs`, `public/robots.txt`, and set it in repo Settings → Pages. No `CNAME` file is needed with Actions deployment.
+- Custom domain: **https://avirupbasu.com** (apex is canonical; `www` and `avirup171.github.io` redirect to it). DNS at GoDaddy: four A + four AAAA records to GitHub Pages, `www` CNAME → `avirup171.github.io`. If the domain changes, update `site` in `astro.config.mjs`, `url` in `profile.json`, `public/robots.txt`, `public/og.png`, and repo Settings → Pages. No `CNAME` file is needed with Actions deployment.
 
 ## Content model: everything configurable lives in JSON
 
@@ -120,8 +120,6 @@ npm run preview   # serve the build locally
 
 ## Open decisions / TODO
 
-- Custom domain name
-- Real photo for `src/assets/avirup.jpg` (currently a marked placeholder)
 - Posts for `links.json`; testimonials for `reviews.json`
 - `companyUrl` for Kernopy
 - Public profiles (DEV, Sessionize, Product Hunt, Thinkers360, book bios) describe him as "CEO & Founder"; this site says "CTO & Co-founder". Align them so search engines see one consistent identity.

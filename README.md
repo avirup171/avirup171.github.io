@@ -2,7 +2,7 @@
 
 Personal site of **Avirup Basu**, built with [Astro](https://astro.build) and deployed to GitHub Pages by GitHub Actions.
 
-Live: https://avirup171.github.io
+Live: https://avirupbasu.com (also reachable at avirup171.github.io, which redirects)
 
 ## Editing content
 
@@ -67,10 +67,8 @@ In the repo: **Settings → Pages → Build and deployment → Source: GitHub Ac
 
 ## Still to do
 
-- [ ] Replace `src/assets/avirup.jpg` with a real photo (square, at least 800×800).
 - [ ] Add real posts to `src/data/links.json`.
 - [ ] Add testimonials to `src/data/reviews.json` (only with permission from the person quoted).
 - [ ] Set `companyUrl` in `profile.json` once the Kernopy website URL is final.
 - [ ] Optionally set `email` in `profile.json` to show it under Contact.
-- [ ] Custom domain: update `site` in `astro.config.mjs` and `public/robots.txt`, then set it in Settings → Pages.
 - [ ] Regenerate `public/og.png` (1200×630) if the title or tagline changes.
